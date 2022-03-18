@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <!--<link rel="icon" href="%PUBLIC_URL%/favicon.ico" />-->
-    <link rel="icon" href="favicon.ico" />
+    <link rel="icon" href="icons/favicon.ico" />
     <link rel="stylesheet" href="index.css">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
@@ -17,39 +17,43 @@
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div class="app" id="app">
       <header class="header">
-        <button class="header__sign-up">SIGN UP</button>
-        <button class="header__log-in">LOG IN</button>
+        <div class="header__fixed-block">
+          <button class="header__sign-up">SIGN UP</button>
+          <button class="header__log-in">LOG IN</button>
+        </div>
       </header>
       <aside class="aside">
-        <a href="index.html" title="Spotibye" class="logo link link_with-icon">
-          <img src="logo.png" width="32" height="32" alt="Logo" />
-          <h1 class="logo__text">Spotibye</h1>
-        </a>
-        <div class="aside-nav">
-          <nav>
-            <a href="index.html" title="Home" class="aside-nav-link link link_with-icon">
-              <img src="home.png" width="32" height="32" alt="Home" />
-              <h1 class="aside-nav-link__text">Home</h1>
-            </a>
-            <a href="index.html" title="Search" class="aside-nav-link link link_with-icon">
-              <img src="search.png" width="32" height="32" alt="Search" />
-              <h1 class="aside-nav-link__text">Search</h1>
-            </a>
-            <a href="index.html" title="Your Library" class="aside-nav-link link link_with-icon">
-              <img src="lib.png" width="32" height="32" alt="Library" />
-              <h1 class="aside-nav-link__text">Your Library</h1>
-            </a>
-          </nav>
-          <nav>
-            <a href="index.html" title="Create playlist" class="aside-nav-link link link_with-icon">
-              <img src="create_playlist.png" width="32" height="32" alt="Create playlist" />
-              <h1 class="aside-nav-link__text">Create playlist</h1>
-            </a>
-            <a href="index.html" title="Liked songs" class="aside-nav-link link link_with-icon">
-              <img src="liked_songs.png" width="32" height="32" alt="Liked songs" />
-              <h1 class="aside-nav-link__text">Liked songs</h1>
-            </a>
-          </nav>
+        <div class="aside__fixed-block">
+          <a href="index.html" title="Spotibye" class="logo link link_with-icon">
+            <img src="icons/logo.png" width="25" height="25" alt="Logo" />
+            <h1 class="logo__text">Spotibye</h1>
+          </a>
+          <div class="aside-nav">
+            <nav class="aside-nav__top-nav">
+              <a href="index.html" title="Home" class="aside-nav-link link link_with-icon">
+                <img src="icons/home.png" width="20" height="20" alt="Home" />
+                <h1 class="aside-nav-link__text">Home</h1>
+              </a>
+              <a href="index.html" title="Search" class="aside-nav-link link link_with-icon">
+                <img src="icons/search.png" width="20" height="20" alt="Search" />
+                <h1 class="aside-nav-link__text">Search</h1>
+              </a>
+              <a href="index.html" title="Your Library" class="aside-nav-link link link_with-icon">
+                <img src="icons/library.png" width="20" height="20" alt="Library" />
+                <h1 class="aside-nav-link__text">Your Library</h1>
+              </a>
+            </nav>
+            <nav class="aside-nav__bottom-nav">
+              <a href="index.html" title="Create playlist" class="aside-nav-link link link_with-icon">
+                <img src="icons/create_playlist.png" width="20" height="20" alt="Create playlist" />
+                <h1 class="aside-nav-link__text">Create playlist</h1>
+              </a>
+              <a href="index.html" title="Liked songs" class="aside-nav-link link link_with-icon">
+                <img src="icons/liked_songs.png" width="20" height="20" alt="Liked songs" />
+                <h1 class="aside-nav-link__text">Liked songs</h1>
+              </a>
+            </nav>
+          </div>
         </div>
       </aside>
       <main class="main">
@@ -62,153 +66,29 @@
         </div>
         <div class="music-body">
           <div class="music-set">
-            <img src="search.png" class="music-set__image" alt="name" />
-            <h2 class="music-set__name">Name</h2>
-            <p class="music-set__description">Description</p>
+            <img src="images/album_template.jpg" class="music-set__image" alt="album cover" />
+            <h2 class="music-set__name">Starboy</h2>
+            <p class="music-set__description">Daft Punk, Lana Del Rey, Kendrick Lamar, and Future</p>
           </div>
           <div class="music-set">
-            <img src="search.png" class="music-set__image" alt="name" />
-            <h2 class="music-set__name">Name</h2>
-            <p class="music-set__description">Description</p>
+            <img src="images/album_template.jpg" class="music-set__image" alt="album cover" />
+            <h2 class="music-set__name">Starboy</h2>
+            <p class="music-set__description">Daft Punk, Lana Del Rey, Kendrick Lamar, and Future</p>
           </div>
           <div class="music-set">
-            <img src="search.png" class="music-set__image" alt="name" />
-            <h2 class="music-set__name">Name</h2>
-            <p class="music-set__description">Description</p>
+            <img src="images/album_template.jpg" class="music-set__image" alt="album cover" />
+            <h2 class="music-set__name">Starboy</h2>
+            <p class="music-set__description">Daft Punk, Lana Del Rey, Kendrick Lamar, and Future</p>
           </div>
           <div class="music-set">
-            <img src="search.png" class="music-set__image" alt="name" />
-            <h2 class="music-set__name">Name</h2>
-            <p class="music-set__description">Description</p>
-          </div>
-        </div>
-
-
-
-
-
-
-
-
-        <div class="music-header">
-          <div class="music-info">
-            <a href="index.html" class="link music-info__title">Focus</a>
-            <p class="music-info__description">Music to help you concentrate</p>
-          </div>
-          <a class="music-header__see-all-link link" href="index.html">SEE ALL</a>
-        </div>
-        <div class="music-body">
-          <div class="music-set">
-            <img src="search.png" class="music-set__image" alt="name" />
-            <h2 class="music-set__name">Name</h2>
-            <p class="music-set__description">Description</p>
-          </div>
-          <div class="music-set">
-            <img src="search.png" class="music-set__image" alt="name" />
-            <h2 class="music-set__name">Name</h2>
-            <p class="music-set__description">Description</p>
-          </div>
-          <div class="music-set">
-            <img src="search.png" class="music-set__image" alt="name" />
-            <h2 class="music-set__name">Name</h2>
-            <p class="music-set__description">Description</p>
-          </div>
-          <div class="music-set">
-            <img src="search.png" class="music-set__image" alt="name" />
-            <h2 class="music-set__name">Name</h2>
-            <p class="music-set__description">Description</p>
-          </div>
-        </div>
-        <div class="music-header">
-          <div class="music-info">
-            <a href="index.html" class="link music-info__title">Focus</a>
-            <p class="music-info__description">Music to help you concentrate</p>
-          </div>
-          <a class="music-header__see-all-link link" href="index.html">SEE ALL</a>
-        </div>
-        <div class="music-body">
-          <div class="music-set">
-            <img src="search.png" class="music-set__image" alt="name" />
-            <h2 class="music-set__name">Name</h2>
-            <p class="music-set__description">Description</p>
-          </div>
-          <div class="music-set">
-            <img src="search.png" class="music-set__image" alt="name" />
-            <h2 class="music-set__name">Name</h2>
-            <p class="music-set__description">Description</p>
-          </div>
-          <div class="music-set">
-            <img src="search.png" class="music-set__image" alt="name" />
-            <h2 class="music-set__name">Name</h2>
-            <p class="music-set__description">Description</p>
-          </div>
-          <div class="music-set">
-            <img src="search.png" class="music-set__image" alt="name" />
-            <h2 class="music-set__name">Name</h2>
-            <p class="music-set__description">Description</p>
-          </div>
-        </div>
-        <div class="music-header">
-          <div class="music-info">
-            <a href="index.html" class="link music-info__title">Focus</a>
-            <p class="music-info__description">Music to help you concentrate</p>
-          </div>
-          <a class="music-header__see-all-link link" href="index.html">SEE ALL</a>
-        </div>
-        <div class="music-body">
-          <div class="music-set">
-            <img src="search.png" class="music-set__image" alt="name" />
-            <h2 class="music-set__name">Name</h2>
-            <p class="music-set__description">Description</p>
-          </div>
-          <div class="music-set">
-            <img src="search.png" class="music-set__image" alt="name" />
-            <h2 class="music-set__name">Name</h2>
-            <p class="music-set__description">Description</p>
-          </div>
-          <div class="music-set">
-            <img src="search.png" class="music-set__image" alt="name" />
-            <h2 class="music-set__name">Name</h2>
-            <p class="music-set__description">Description</p>
-          </div>
-          <div class="music-set">
-            <img src="search.png" class="music-set__image" alt="name" />
-            <h2 class="music-set__name">Name</h2>
-            <p class="music-set__description">Description</p>
-          </div>
-        </div>
-        <div class="music-header">
-          <div class="music-info">
-            <a href="index.html" class="link music-info__title">Focus</a>
-            <p class="music-info__description">Music to help you concentrate</p>
-          </div>
-          <a class="music-header__see-all-link link" href="index.html">SEE ALL</a>
-        </div>
-        <div class="music-body">
-          <div class="music-set">
-            <img src="search.png" class="music-set__image" alt="name" />
-            <h2 class="music-set__name">Name</h2>
-            <p class="music-set__description">Description</p>
-          </div>
-          <div class="music-set">
-            <img src="search.png" class="music-set__image" alt="name" />
-            <h2 class="music-set__name">Name</h2>
-            <p class="music-set__description">Description</p>
-          </div>
-          <div class="music-set">
-            <img src="search.png" class="music-set__image" alt="name" />
-            <h2 class="music-set__name">Name</h2>
-            <p class="music-set__description">Description</p>
-          </div>
-          <div class="music-set">
-            <img src="search.png" class="music-set__image" alt="name" />
-            <h2 class="music-set__name">Name</h2>
-            <p class="music-set__description">Description</p>
+            <img src="images/album_template.jpg" class="music-set__image" alt="album cover" />
+            <h2 class="music-set__name">Starboy</h2>
+            <p class="music-set__description">Daft Punk, Lana Del Rey, Kendrick Lamar, and Future</p>
           </div>
         </div>
       </main>
       <footer class="footer">
-        <p>h</p>
+        <a href="https://github.com/OverKrice3000/task-html" rel="noopener" target="_blank" class="link footer__github">GitHub Repository</a>
       </footer>
     </div>
   </body>
