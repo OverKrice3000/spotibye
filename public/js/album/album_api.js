@@ -2,7 +2,7 @@
  * This file contains functions, that query external spotify api and return Promise
  */
 
-import {access_token} from "../auth/auth.js";
+import {access_token, update_access_token} from "../auth/auth.js";
 
 /**
  * This function queries new releases
@@ -11,14 +11,26 @@ import {access_token} from "../auth/auth.js";
  * @returns {Promise<Object>} a promise with list of new releases
  */
 export async function get_new_releases(offset, limit){
-    return fetch("https://api.spotify.com/v1/browse/new-releases", {
+    let new_releases_fetch_query = () => fetch("https://api.spotify.com/v1/browse/new-releases", {
         method: "GET",
         headers: {
             "Authorization": `Bearer ${access_token}`,
             "Content-Type": "application/json"
         }
-    }).then((response) => response.json())
+    })
+    return new_releases_fetch_query().then((response) => {
+        if(response.status === 401){
+            return update_access_token().then((result) => {
+                return new_releases_fetch_query().then(response => response.json(), error => Promise.reject(error))
+            }, error => Promise.reject(error))
+        }
+        else if(response.status === 200)
+            return response.json();
+        else
+            return Promise.reject("failed to query api, unknown error")
+    })
 }
+
 
 /**
  * This function saves an album in user's library
@@ -26,7 +38,7 @@ export async function get_new_releases(offset, limit){
  * @returns {Promise<Response>} A promise, which contains result of the query
  */
 export async function save_album_to_library(id){
-    return fetch("https://api.spotify.com/v1/me/albums", {
+    let save_albums_fetch_query = () => fetch("https://api.spotify.com/v1/me/albums", {
         method: "PUT",
         headers: {
             "Authorization": `Bearer ${access_token}`,
@@ -38,6 +50,14 @@ export async function save_album_to_library(id){
             ]
         })
     })
+    return save_albums_fetch_query().then((response) => {
+        if(response.status === 401)
+            return update_access_token().then(() => save_albums_fetch_query(), error => Promise.reject(error))
+        else if(response.status === 200)
+            return Promise.resolve()
+        else
+            return Promise.reject("failed to query api, unknown error")
+    })
 }
 
 /**
@@ -46,7 +66,7 @@ export async function save_album_to_library(id){
  * @returns {Promise<Response>} A promise, which contains result of the query
  */
 export async function remove_album_from_library(id){
-    return fetch("https://api.spotify.com/v1/me/albums", {
+    let remove_album_fetch_query = () => fetch("https://api.spotify.com/v1/me/albums", {
         method: "DELETE",
         headers: {
             "Authorization": `Bearer ${access_token}`,
@@ -58,6 +78,14 @@ export async function remove_album_from_library(id){
             ]
         })
     })
+    return remove_album_fetch_query().then((response) => {
+        if(response.status === 401)
+            return update_access_token().then(() => remove_album_fetch_query(), error => Promise.reject(error))
+        else if(response.status === 200)
+            return Promise.resolve()
+        else
+            return Promise.reject("failed to query api, unknown error")
+    })
 }
 
 /**
@@ -67,13 +95,21 @@ export async function remove_album_from_library(id){
  * @returns {Promise<Object>} a promise with list of saved albums
  */
 export async function get_saved_albums(offset, limit){
-    return fetch("https://api.spotify.com/v1/me/albums", {
+    let get_saved_albums_fetch_query = () => fetch("https://api.spotify.com/v1/me/albums", {
         method: "GET",
         headers: {
             "Authorization": `Bearer ${access_token}`,
             "Content-Type": "application/json"
         }
-    }).then((response) => response.json())
+    })
+    return get_saved_albums_fetch_query().then((response) => {
+        if(response.status === 401)
+            return update_access_token().then(() => get_saved_albums_fetch_query().then(response => response.json(), error => Promise.reject(error)), error => Promise.reject(error))
+        else if(response.status === 200)
+            return response.json()
+        else
+            return Promise.reject("failed to query api, unknown error")
+    })
 }
 
 /**
@@ -88,11 +124,19 @@ export async function are_albums_saved(albums){
         if(i !== albums.length - 1)
             url += ","
     }
-    return fetch(url, {
+    let albums_saved_fetch_query = () => fetch(url, {
         method: "GET",
         headers: {
             "Authorization": `Bearer ${access_token}`,
             "Content-Type": "application/json"
         }
-    }).then((response) => response.json())
+    })
+    return albums_saved_fetch_query().then((response) => {
+        if(response.status === 401)
+            return update_access_token().then(() => albums_saved_fetch_query().then(response => response.json(), error => Promise.reject(error)), error => Promise.reject(error))
+        else if(response.status === 200)
+            return response.json()
+        else
+            return Promise.reject("failed to query api, unknown error")
+    })
 }
