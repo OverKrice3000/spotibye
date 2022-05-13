@@ -8,6 +8,7 @@ import {album_component_main_information_builder, album_component_remove_button_
  * This function loads library page
  */
 async function load_library(){
+    await update_access_token()
     let my_json = await get_saved_albums(0, 20)
     if(typeof my_json === 'undefined')
         throw new Error("failed to fetch remote api")
