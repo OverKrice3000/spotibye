@@ -6,7 +6,7 @@ let client_secret = 'd830830d45044e95b4e9b1730cfdc914'
 
 /**
  * This function receives new access token by sending refresh token to api endpoint
- * @returns {Promise<any>} a Promise with access token string
+ * @returns {Promise<string>} a Promise with access token string
  */
 async function get_tokens_through_refresh_token(){
     return fetch("https://accounts.spotify.com/api/token", {

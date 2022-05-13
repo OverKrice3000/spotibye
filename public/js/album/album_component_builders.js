@@ -5,8 +5,8 @@
  * These functions build new album components, which will then be added to the page
  */
 
-import * as album_api from "./album_api.js";
-import * as album_funcs from "./album_funcs.js"
+import {save_album_to_library, remove_album_from_library} from "./album_api.js";
+import {create_album_desc_string} from "./album_funcs.js";
 
 /**
  * A builder, which adds main information about album to the component.
@@ -22,11 +22,11 @@ export function album_component_main_information_builder(music_set, album){
 
     let music_set_name = document.createElement("h2")
     music_set_name.classList.add("music-set__name")
-    music_set_name.innerHTML = `${album.name}`
+    music_set_name.textContent = `${album.name}`
 
     let music_set_desc = document.createElement("p")
     music_set_desc.classList.add("music-set__description")
-    music_set_desc.innerHTML = album_funcs.create_album_desc_string(album)
+    music_set_desc.textContent = create_album_desc_string(album)
 
     music_set.append(music_set_image)
     music_set.append(music_set_name)
@@ -41,16 +41,16 @@ export function album_component_main_information_builder(music_set, album){
 export function album_component_save_button_builder(music_set, album){
     let music_set_btn = document.createElement("button")
     music_set_btn.classList.add("music-set__button")
-    music_set_btn.innerHTML = "Save album"
+    music_set_btn.textContent = "Save album"
     if(album.saved_in_user_library){
         music_set_btn.disabled = true
-        music_set_btn.innerHTML = "Saved to your library"
+        music_set_btn.textContent = "Saved to your library"
     }
     else {
         music_set_btn.addEventListener("click", () => {
-            album_api.save_album_to_library(album.id)
+            save_album_to_library(album.id)
             music_set_btn.disabled = true
-            music_set_btn.innerHTML = "Saved to your library"
+            music_set_btn.textContent = "Saved to your library"
         })
     }
     music_set.append(music_set_btn)
@@ -64,11 +64,11 @@ export function album_component_save_button_builder(music_set, album){
 export function album_component_remove_button_builder(music_set, album){
     let music_set_btn = document.createElement("button")
     music_set_btn.classList.add("music-set__button")
-    music_set_btn.innerHTML = "Remove album"
+    music_set_btn.textContent = "Remove album"
     music_set_btn.addEventListener("click", () => {
-        album_api.remove_album_from_library(album.id)
+        remove_album_from_library(album.id)
         music_set_btn.disabled = true
-        music_set_btn.innerHTML = "Removed"
+        music_set_btn.textContent = "Removed"
     })
     music_set.append(music_set_btn)
 }

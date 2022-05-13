@@ -21,21 +21,6 @@ export function add_albums_on_front_page(albums, album_builder_list){
     }
 }
 
-/**
- * This function preprocesses information about albums saved in user's library
- * received from api.
- * Information about albums received from different api endpoints differs
- * and needs to be preprocessed to be used as a function argument
- * @param saved_albums information about albums saved in user's library
- * @returns {*[]} preprocessed list
- */
-export function preprocess_saved_albums_received(saved_albums){
-    let albums = []
-    for(let i = 0; i < saved_albums.length; i++){
-        albums[i] = saved_albums[i].album
-    }
-    return albums;
-}
 
 /**
  *
