@@ -139,14 +139,15 @@
 
 .music-body{
     display: flex;
-    justify-content: space-between;
+    width: 100%;
 }
 
 .music-set{
+    display: flex ;
+    flex-flow: column nowrap;
     width: 18%;
     padding: 15px;
-    margin-top: 10px;
-    margin-bottom: 50px;
+    margin: 10px 7% 50px 0;
     background-color: #1c1c1c;
     border-radius: 5%;
 }
@@ -160,9 +161,23 @@
     margin: 5px 0;
 }
 
-.music-set__description{
+.music-set__description {
     color: #696969;
     font-size: 9px;
+    margin-bottom: 5px;
+}
+
+.music-set__button{
+    margin-top: auto;
+    width: 100%;
+    border-radius: 15%/50%;
+    font-family: inherit;
+    font-size: 10px;
+    height: 50px;
+}
+
+.music-set__button:hover{
+    cursor: pointer;
 }
 
 .footer {
