@@ -1,0 +1,199 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.app {
+    display: grid;
+    grid-template: min-content 1fr min-content / minmax(min-content, 15%) 1fr;
+    min-height: 100vh;
+    height: 100%;
+    color: white;
+    font-family: Lucida Console, Courier, monospace;
+    font-size: 14px;
+}
+
+.link {
+    color: inherit;
+    text-decoration: none;
+}
+
+.link_with-icon {
+    display: flex;
+    height: min-content;
+    align-items: center;
+}
+
+.link-with-icon__text{
+    margin-left: 5px;
+}
+
+.header {
+    grid-area: 1 / 2 / span 1 / span 1;
+    background-color: #101010;
+    display: flex;
+    min-height: 5vh;
+    padding: 15px;
+    justify-content: flex-end;
+    position: sticky;
+    top: 0;
+}
+
+.header__sign-up{
+    color: white;
+    background-color: inherit;
+    border:none;
+    height: 30px;
+    width:90px;
+    border-radius: 15%/50%;
+    font-family: inherit;
+    font-size: 10px;
+}
+
+.header__sign-up:hover{
+    cursor: pointer;
+}
+
+.header__log-in{
+    margin-left: 10px;
+    background-color: white;
+    border:none;
+    height: 30px;
+    width:90px;
+    border-radius: 15%/50%;
+    font-family: inherit;
+    font-size: 10px;
+}
+
+.header__log-in:hover{
+    cursor: pointer;
+}
+
+.aside {
+    grid-area: 1 / 1 / span 2 / span 1;
+    background-color: black;
+    height: 100%;
+}
+
+.aside__fixed-block{
+    position: sticky;
+    top: 0;
+    padding: 20px;
+    height: 90vh;
+}
+
+.aside-nav{
+    display:flex;
+    flex-flow: column nowrap;
+    justify-content: space-around;
+    height: min-content;
+    border-bottom: 1px dimgray solid;
+    margin-top: 20px;
+}
+
+.aside-nav-link{
+    margin: 8px;
+}
+
+.aside-nav__bottom-nav{
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.aside-nav-link__text{
+    font-size: 10px;
+    margin-left: 10px;
+}
+
+.logo__text{
+    font-size: 18px;
+    margin-left: 5px;
+}
+
+.main {
+    grid-area: 2 / 2 / span 1 / span 1;
+    background-color: #202020;
+    padding: 20px;
+}
+
+.music-header{
+    display: flex;
+    justify-content: space-between;
+}
+
+.music-info__title{
+    font-size: 18px;
+}
+
+.music-info__description{
+    font-size: 11px;
+    color: #a0a0a0;
+}
+
+.music-header__see-all-link{
+    font-size: 14px;
+    color: #a0a0a0;
+    align-self: flex-end;
+}
+
+.music-body{
+    display: flex;
+    width: 100%;
+}
+
+.music-set{
+    display: flex ;
+    flex-flow: column nowrap;
+    width: 18%;
+    padding: 15px;
+    margin: 10px 7% 50px 0;
+    background-color: #1c1c1c;
+    border-radius: 5%;
+}
+
+.music-set__image{
+    width: 100%;
+}
+
+.music-set__name{
+    font-size: 12px;
+    margin: 5px 0;
+}
+
+.music-set__description {
+    color: #696969;
+    font-size: 9px;
+    margin-bottom: 5px;
+}
+
+.music-set__button{
+    margin-top: auto;
+    width: 100%;
+    border-radius: 15%/50%;
+    font-family: inherit;
+    font-size: 10px;
+    height: 50px;
+}
+
+.music-set__button:hover{
+    cursor: pointer;
+}
+
+.footer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    grid-area: 3 / 1 / span 1 / span 2;
+    background-color: blueviolet;
+    min-height: 5vh;
+    padding: 5px;
+    position: sticky;
+    bottom: 0;
+}
+
+.footer__github{
+    font-size: 10px;
+}
+
+
