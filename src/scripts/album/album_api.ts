@@ -2,15 +2,16 @@
  * This file contains functions, that query external spotify api and return Promise
  */
 
-import {access_token, update_access_token} from "../auth/auth.js";
+import {access_token, update_access_token} from "../auth/auth";
+import {AlbumType} from "../Types";
 
 /**
  * This function queries new releases
  * @param offset an offset, from which albums will be queried
  * @param limit maximum amount of albums, which will be received in response
- * @returns {Promise<Object>} a promise with list of new releases
+ * @returns {Promise<Albums>} a promise with list of new releases
  */
-export async function get_new_releases(offset, limit){
+export async function get_new_releases(offset : number, limit : number){
     let new_releases_fetch_query = () => fetch("https://api.spotify.com/v1/browse/new-releases", {
         method: "GET",
         headers: {
@@ -20,7 +21,7 @@ export async function get_new_releases(offset, limit){
     })
     return new_releases_fetch_query().then((response) => {
         if(response.status === 401){
-            return update_access_token().then((result) => {
+            return update_access_token().then(result => {
                 return new_releases_fetch_query().then(response => response.json(), error => Promise.reject(error))
             }, error => Promise.reject(error))
         }
@@ -37,7 +38,7 @@ export async function get_new_releases(offset, limit){
  * @param id id of album, which is to be saved
  * @returns {Promise<Response>} A promise, which contains result of the query
  */
-export async function save_album_to_library(id){
+export async function save_album_to_library(id : string){
     let save_albums_fetch_query = () => fetch("https://api.spotify.com/v1/me/albums", {
         method: "PUT",
         headers: {
@@ -50,11 +51,11 @@ export async function save_album_to_library(id){
             ]
         })
     })
-    return save_albums_fetch_query().then((response) => {
+    return save_albums_fetch_query().then(response => {
         if(response.status === 401)
             return update_access_token().then(() => save_albums_fetch_query(), error => Promise.reject(error))
         else if(response.status === 200)
-            return Promise.resolve()
+            return Promise.resolve(response)
         else
             return Promise.reject("failed to query api, unknown error")
     })
@@ -65,7 +66,7 @@ export async function save_album_to_library(id){
  * @param id id of album,  which is to be removed
  * @returns {Promise<Response>} A promise, which contains result of the query
  */
-export async function remove_album_from_library(id){
+export async function remove_album_from_library(id : string){
     let remove_album_fetch_query = () => fetch("https://api.spotify.com/v1/me/albums", {
         method: "DELETE",
         headers: {
@@ -78,11 +79,11 @@ export async function remove_album_from_library(id){
             ]
         })
     })
-    return remove_album_fetch_query().then((response) => {
+    return remove_album_fetch_query().then(response => {
         if(response.status === 401)
             return update_access_token().then(() => remove_album_fetch_query(), error => Promise.reject(error))
         else if(response.status === 200)
-            return Promise.resolve()
+            return Promise.resolve(response)
         else
             return Promise.reject("failed to query api, unknown error")
     })
@@ -92,9 +93,9 @@ export async function remove_album_from_library(id){
  * This function queries albums, which are saved in user's library
  * @param offset an offset, from which albums will be queried
  * @param limit maximum amount of albums, which will be received in response
- * @returns {Promise<Object>} a promise with list of saved albums
+ * @returns {Promise<Albums>} a promise with list of saved albums
  */
-export async function get_saved_albums(offset, limit){
+export async function get_saved_albums(offset : number, limit : number){
     let get_saved_albums_fetch_query = () => fetch("https://api.spotify.com/v1/me/albums", {
         method: "GET",
         headers: {
@@ -102,7 +103,7 @@ export async function get_saved_albums(offset, limit){
             "Content-Type": "application/json"
         }
     })
-    return get_saved_albums_fetch_query().then((response) => {
+    return get_saved_albums_fetch_query().then(response => {
         if(response.status === 401)
             return update_access_token().then(() => get_saved_albums_fetch_query().then(response => response.json(), error => Promise.reject(error)), error => Promise.reject(error))
         else if(response.status === 200)
@@ -115,9 +116,9 @@ export async function get_saved_albums(offset, limit){
 /**
  * This function tells whether albums are saved in user's library or not
  * @param albums A list of albums, for which a query will be made
- * @returns {Promise<Object>} A promise with list of boolean values for each album queried
+ * @returns {Promise<boolean[]>} A promise with list of boolean values for each album queried
  */
-export async function are_albums_saved(albums){
+export async function are_albums_saved(albums : AlbumType[]){
     let url = "https://api.spotify.com/v1/me/albums/contains?ids="
     for(let i = 0; i < albums.length; i++){
         url += albums[i].id
@@ -131,7 +132,7 @@ export async function are_albums_saved(albums){
             "Content-Type": "application/json"
         }
     })
-    return albums_saved_fetch_query().then((response) => {
+    return albums_saved_fetch_query().then(response => {
         if(response.status === 401)
             return update_access_token().then(() => albums_saved_fetch_query().then(response => response.json(), error => Promise.reject(error)), error => Promise.reject(error))
         else if(response.status === 200)
