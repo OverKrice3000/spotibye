@@ -13,7 +13,7 @@ function App() {
     useEffect(() => {
         get_new_releases(0, 20).then(
             (albums) => are_albums_saved(albums.albums.items)
-            .then((albums_saved) => setAlbums(albums.albums.items.map((album: AlbumType, index: number) => Object.assign(album, {saved: albums_saved[index]})))).then(() => console.log(albums))
+                .then((albums_saved) => setAlbums(albums.albums.items.map((album: AlbumType, index: number) => Object.assign(album, {saved: albums_saved[index]}))))
         )
     }, [])
     return (

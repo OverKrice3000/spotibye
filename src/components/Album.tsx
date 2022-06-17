@@ -27,7 +27,7 @@ function Album(props: {album: AlbumType, albumButtonType: albumButtonType }) {
             {
                 (props.albumButtonType === "Save") ?
                 <SaveAlbumButton id={props.album.id} saved={props.album.saved} /> :
-                <RemoveAlbumButton id={props.album.id} removed={false} />
+                <RemoveAlbumButton id={props.album.id} />
             }
         </div>
     );
